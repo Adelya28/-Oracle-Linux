@@ -1,26 +1,24 @@
 Методические указания по гостевым дополнениям в Линукс Иблиева Аделя К-ИСП-49-1
-
-
 1 шаг. Верхняя вкладка "Устройства". Выбрать "Подключить образ диска Дополнений гостевой ОС"
-
 2 шаг. В диалоговом окне выбрать "Run". Ввести пароль. Далее - установка.
-
 3 шаг. Вкладка "Устройства". Общий буфер обмена - двунаправленый. Функция Drag and Drog - двунаправленный. 
-
 4 шаг. Перезапустить ВМ. Проверить в терминале Ctrl+Shift+V.
 
 
 Установка git
 sudo dnf install git-all
 
+Удалить podman:
+sudo apt remove podman
+
 Устанавливаем wget:
-dnf install wget
+sudo yum install wget
 
 Скачиваем конфигурационный файл для репозитория докер:
 wget -P /etc/yum.repos.d/ https://download.docker.com/linux/centos/docker-ce.repo
 
 Теперь устанавливаем docker:
-dnf install docker-ce docker-ce-cli
+sudo dnf install docker-ce docker-ce-cli
 
 И разрешаем автозапуск сервиса и стартуем его:
 systemctl enable docker --now
@@ -41,7 +39,7 @@ touch /mnt/common_volume/grafana/grafana-config/grafana.ini
 cd grafana_stack_for_docker
 cp config/* /mnt/common_volume/swarm/grafana/config/
 mv grafana.yaml docker-compose.yaml
-docker compose up -d
+sudo docker compose up -d
 
 localhost:3000
 
@@ -76,6 +74,14 @@ node-exporter:
 :wq!
 
 sudo docker compose up -d
+
+
+Удаление локи и тд:
+sudo docker-compose stop
+sudo vi docker-compose.yaml
+удалить там всё ненужное!
+sudo docker-compose up -d
+
 
 
 
