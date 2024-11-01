@@ -1,4 +1,4 @@
-![Curl](https://github.com/user-attachments/assets/280c1c4f-8dd1-4f4f-a1e1-e9367368ccdf)![image](https://github.com/user-attachments/assets/267323fd-013b-4b9f-ace1-b73fd6409840)
+![image](https://github.com/user-attachments/assets/267323fd-013b-4b9f-ace1-b73fd6409840)
 
 Методические указания по гостевым дополнениям в Линукс Иблиева Аделя К-ИСП-49-1
 1 шаг. Верхняя вкладка "Устройства". Выбрать "Подключить образ диска Дополнений гостевой ОС"
