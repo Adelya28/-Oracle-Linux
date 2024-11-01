@@ -8,6 +8,7 @@
 
 Установка git
 sudo dnf install git-all
+
 ![image](https://github.com/user-attachments/assets/5526f1ca-deb8-4fee-801a-b789a1fb4136)
 
 Удалить podman:
@@ -18,6 +19,7 @@ sudo yum install wget
 
 Скачиваем конфигурационный файл для репозитория докер:
 wget -P /etc/yum.repos.d/ https://download.docker.com/linux/centos/docker-ce.repo
+
 ![image](https://github.com/user-attachments/assets/97021146-71d2-4254-93d1-a10e8ed0a8b4)
 
 
@@ -31,10 +33,12 @@ systemctl enable docker --now
 sudo yum install curl
 COMVER=$(curl -s https://api.github.com/repos/docker/compose/releases/latest | grep 'tag_name' | cut -d\" -f4)
 sudo curl -L "https://github.com/docker/compose/releases/download/$COMVER/docker-compose-$(uname -s)-$(uname -m)" -o /usr/bin/docker-compose
+
 ![установка docker-compose](https://github.com/user-attachments/assets/2497ce3a-8ac9-497d-b110-34c5b5d688bd)
 
 sudo chmod +x /usr/bin/docker-compose
 sudo docker-compose --version
+
 ![установка compose v2 29 7](https://github.com/user-attachments/assets/20a492d4-7380-42f0-b57d-629a639feb28)
 
 
@@ -48,9 +52,12 @@ cd grafana_stack_for_docker
 cp config/* /mnt/common_volume/swarm/grafana/config/
 mv grafana.yaml docker-compose.yaml
 sudo docker compose up -d
+
 ![установка grafana](https://github.com/user-attachments/assets/a106fc25-6123-406e-bb83-0b3fe545076f)
 
+
 Остановка docker-compose
+
 ![остановка docker-compose](https://github.com/user-attachments/assets/389f093b-18bd-41d9-925e-0ab9be7c34b2)
 
 
@@ -97,10 +104,14 @@ sudo docker-compose stop
 sudo vi docker-compose.yaml
 удалить там всё ненужное!
 sudo docker-compose up -d
+
 ![удаление локи и тд](https://github.com/user-attachments/assets/51724023-c80c-4493-8d10-d5b63f2abd6b)
 
+
 Добавление VM и AM
+
 ![установк Ви Метрикс](https://github.com/user-attachments/assets/11494698-97b6-4e29-8b6d-84b9d93d22d6)
+
 
 
 
