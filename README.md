@@ -13,74 +13,74 @@
 
 Установка git
 
-sudo dnf install git-all
+`sudo dnf install git-all`
 
 ![image](https://github.com/user-attachments/assets/5526f1ca-deb8-4fee-801a-b789a1fb4136)
 
 
 Удалить podman:
 
-sudo apt remove podman
+`sudo apt remove podman`
 
 
 Устанавливаем wget:
 
-sudo yum install wget
+`sudo yum install wget`
 
 
 Скачиваем конфигурационный файл для репозитория докер:
 
-wget -P /etc/yum.repos.d/ https://download.docker.com/linux/centos/docker-ce.repo
+`wget -P /etc/yum.repos.d/ https://download.docker.com/linux/centos/docker-ce.repo`
 
 ![image](https://github.com/user-attachments/assets/97021146-71d2-4254-93d1-a10e8ed0a8b4)
 
 
 Теперь устанавливаем docker:
 
-sudo dnf install docker-ce docker-ce-cli
+`sudo dnf install docker-ce docker-ce-cli`
 
 
 И разрешаем автозапуск сервиса и стартуем его:
 
-systemctl enable docker --now
+`systemctl enable docker --now`
 
 
 Установка docker-compose:
 
-sudo yum install curl
+`sudo yum install curl`
 
-COMVER=$(curl -s https://api.github.com/repos/docker/compose/releases/latest | grep 'tag_name' | cut -d\" -f4)
+`COMVER=$(curl -s https://api.github.com/repos/docker/compose/releases/latest | grep 'tag_name' | cut -d\" -f4)`
 
-sudo curl -L "https://github.com/docker/compose/releases/download/$COMVER/docker-compose-$(uname -s)-$(uname -m)" -o /usr/bin/docker-compose
+`sudo curl -L "https://github.com/docker/compose/releases/download/$COMVER/docker-compose-$(uname -s)-$(uname -m)" -o /usr/bin/docker-compose`
 
 ![установка docker-compose](https://github.com/user-attachments/assets/2497ce3a-8ac9-497d-b110-34c5b5d688bd)
 
-sudo chmod +x /usr/bin/docker-compose
+`sudo chmod +x /usr/bin/docker-compose`
 
-sudo docker-compose --version
+`sudo docker-compose --version`
 
 ![установка compose v2 29 7](https://github.com/user-attachments/assets/20a492d4-7380-42f0-b57d-629a639feb28)
 
 
 Установка графана:
 
-git clone https://github.com/skl256/grafana_stack_for_docker.git
+`git clone https://github.com/skl256/grafana_stack_for_docker.git`
 
-sudo mkdir -p /mnt/common_volume/swarm/grafana/config
+`sudo mkdir -p /mnt/common_volume/swarm/grafana/config`
 
-sudo mkdir -p /mnt/common_volume/grafana/{grafana-config,grafana-data,prometheus-data,loki-data,promtail-data}
+`sudo mkdir -p /mnt/common_volume/grafana/{grafana-config,grafana-data,prometheus-data,loki-data,promtail-data}`
 
-sudo chown -R $(id -u):$(id -g) {/mnt/common_volume/swarm/grafana/config,/mnt/common_volume/grafana}
+`sudo chown -R $(id -u):$(id -g) {/mnt/common_volume/swarm/grafana/config,/mnt/common_volume/grafana}`
 
-touch /mnt/common_volume/grafana/grafana-config/grafana.ini
+`touch /mnt/common_volume/grafana/grafana-config/grafana.ini`
 
-cd grafana_stack_for_docker
+`cd grafana_stack_for_docker`
 
-cp config/* /mnt/common_volume/swarm/grafana/config/
+`cp config/* /mnt/common_volume/swarm/grafana/config/`
 
-mv grafana.yaml docker-compose.yaml
+`mv grafana.yaml docker-compose.yaml`
 
-sudo docker compose up -d
+`sudo docker compose up -d`
 
 ![установка grafana](https://github.com/user-attachments/assets/a106fc25-6123-406e-bb83-0b3fe545076f)
 
@@ -122,7 +122,7 @@ node-exporter:
 
 :wq!
 
-sudo docker compose up -d
+`sudo docker compose up -d`
 
 ![добавление node-exporter](https://github.com/user-attachments/assets/015d3026-4efe-4ca0-924c-81c2c4516321)
 
@@ -130,13 +130,13 @@ sudo docker compose up -d
 
 Удаление локи и тд:
 
-sudo docker-compose stop
+`sudo docker-compose stop`
 
-sudo vi docker-compose.yaml
+`sudo vi docker-compose.yaml`
 
 удалить там всё ненужное!
 
-sudo docker-compose up -d
+`sudo docker-compose up -d`
 
 ![удаление локи и тд](https://github.com/user-attachments/assets/51724023-c80c-4493-8d10-d5b63f2abd6b)
 
@@ -148,10 +148,8 @@ sudo docker-compose up -d
 
 
 
-echo -e "# TYPE OILCOINT_metric1 gauge\nOILCOINT_metric1 0" | curl --data-binary @- http://localhost:8428/api/v1/import/prometheus
-
+`echo -e "# TYPE OILCOINT_metric1 gauge\nOILCOINT_metric1 0" | curl --data-binary @- http://localhost:8428/api/v1/import/prometheus
 echo -e "# TYPE OILCOINT_metric2 gauge\nOILCOINT_metric2 0" | curl --data-binary @- http://localhost:8428/api/v1/import/prometheus
-
-curl -G 'http://localhost:8428/api/v1/query' --data-urlencode 'query=OILCOINT_metric1'
+curl -G 'http://localhost:8428/api/v1/query' --data-urlencode 'query=OILCOINT_metric1'`
 
 ![Curl](https://github.com/user-attachments/assets/e4233e5c-0eab-4080-a72f-48d2184b5eb2)
