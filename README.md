@@ -149,6 +149,9 @@ sudo docker-compose up -d
 
 
 echo -e "# TYPE OILCOINT_metric1 gauge\nOILCOINT_metric1 0" | curl --data-binary @- http://localhost:8428/api/v1/import/prometheus
+
 echo -e "# TYPE OILCOINT_metric2 gauge\nOILCOINT_metric2 0" | curl --data-binary @- http://localhost:8428/api/v1/import/prometheus
+
 curl -G 'http://localhost:8428/api/v1/query' --data-urlencode 'query=OILCOINT_metric1'
+
 ![Curl](https://github.com/user-attachments/assets/e4233e5c-0eab-4080-a72f-48d2184b5eb2)
