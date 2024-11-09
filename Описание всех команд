@@ -1,0 +1,151 @@
+1. sudo dnf install git-all
+sudo: Выполняет команду с правами суперпользователя (root).
+dnf: Менеджер пакетов для дистрибутивов Red Hat (CentOS, Fedora).
+install: Устанавливает пакет(ы).
+git-all: Устанавливает пакет git, который включает все необходимые инструменты для работы с системой контроля версий Git.
+
+
+2. sudo yum install wget
+sudo: Выполняет команду с правами суперпользователя (root).
+yum: Менеджер пакетов для дистрибутивов Red Hat (CentOS, Fedora).
+install: Устанавливает пакет(ы).
+wget: Устанавливает пакет wget, который представляет собой утилиту командной строки для загрузки файлов из сети интернет.
+
+
+3. wget -P /etc/yum.repos.d/ https://download.docker.com/linux/centos/docker-ce.repo
+wget: Загружает файл по указанному URL.
+-P /etc/yum.repos.d/: Устанавливает директорию для сохранения загружаемого файла. В данном случае это /etc/yum.repos.d/, где хранятся репозитории для менеджера пакетов yum.
+https://download.docker.com/linux/centos/docker-ce.repo: URL-адрес репозитория Docker для CentOS.
+
+
+4. sudo dnf install docker-ce docker-ce-cli
+sudo: Выполняет команду с правами суперпользователя (root).
+dnf: Менеджер пакетов для дистрибутивов Red Hat (CentOS, Fedora).
+install: Устанавливает пакет(ы).
+docker-ce: Устанавливает пакет docker-ce, который представляет собой сервер Docker для запуска контейнеров.
+docker-ce-cli: Устанавливает пакет docker-ce-cli, который представляет собой CLI-инструмент для взаимодействия с Docker.
+
+
+5. systemctl enable docker --now
+systemctl: Инструмент управления службами systemd.
+enable: Включает службу docker при каждом запуске системы.
+--now: Запускает службу docker немедленно.
+
+
+6. sudo yum install curl
+sudo: Выполняет команду с правами суперпользователя (root).
+yum: Менеджер пакетов для дистрибутивов Red Hat (CentOS, Fedora).
+install: Устанавливает пакет(ы).
+curl: Устанавливает пакет curl, который представляет собой утилиту командной строки для загрузки данных из сети интернет.
+
+
+7. COMVER=$(curl -s https://api.github.com/repos/docker/compose/releases/latest | grep 'tag_name' | cut -d\" -f4)
+COMVER=: Присваивает переменной COMVER результат выполнения команды справа.
+curl -s: Загружает данные по HTTP, подавляя вывод на стандартный поток вывода.
+https://api.github.com/repos/docker/compose/releases/latest: URL API GitHub, который возвращает информацию о последней версии docker-compose.
+grep 'tag_name': Фильтрует полученные данные, оставляя только строку с "tag_name".
+cut -d\" -f4: Вырезает четвертое поле из строки, разделенной кавычками.
+
+
+8. sudo chmod +x /usr/bin/docker-compose
+sudo: Выполняет команду с правами суперпользователя (root).
+chmod +x: Изменяет права доступа к файлу, делая его исполняемым.
+/usr/bin/docker-compose: Путь к исполняемому файлу docker-compose, который позволяет управлять группами контейнеров.
+
+
+9. sudo docker-compose --version
+sudo: Выполняет команду с правами суперпользователя (root).
+docker-compose: Исполняет команду docker-compose, чтобы вывести версию установленного docker-compose.
+
+
+10. git clone https://github.com/skl256/grafana_stack_for_docker.git
+git clone: Клонирует репозиторий Git по указанному URL.
+https://github.com/skl256/grafana_stack_for_docker.git: URL репозитория Git с конфигурацией для Grafana stack в Docker.
+
+
+11. sudo mkdir -p /mnt/common_volume/swarm/grafana/config
+sudo: Выполняет команду с правами суперпользователя (root).
+mkdir -p: Создает директорию, включая все промежуточные директории, если они не существуют.
+/mnt/common_volume/swarm/grafana/config: Путь к директории, где будут храниться конфигурационные файлы для Grafana stack.
+
+
+12. sudo mkdir -p /mnt/common_volume/grafana/{grafana-config,grafana-data,prometheus-data,loki-data,promtail-data}
+sudo: Выполняет команду с правами суперпользователя (root).
+mkdir -p: Создает директории, включая все промежуточные директории, если они не существуют.
+/mnt/common_volume/grafana/{grafana-config,grafana-data,prometheus-data,loki-data,promtail-data}: Пути к директориям для хранения данных и конфигураций разных компонентов Grafana stack.
+
+
+13. sudo chown -R $(id -u):$(id -g) {/mnt/common_volume/swarm/grafana/config,/mnt/common_volume/grafana}
+sudo: Выполняет команду с правами суперпользователя (root).
+chown -R: Изменяет владельца (owner) и группу (group) для файлов и директорий рекурсивно.
+$(id -u):$(id -g): Заменяет на реальный идентификатор пользователя (user ID - id -u) и группы (group ID - id -g).
+{/mnt/common_volume/swarm/grafana/config,/mnt/common_volume/grafana}: Список директорий, для которых меняются права доступа.
+
+
+14. touch /mnt/common_volume/grafana/grafana-config/grafana.ini
+touch: Создает файл, если он не существует.
+/mnt/common_volume/grafana/grafana-config/grafana.ini: Путь к файлу grafana.ini, который является основным конфигурационным файлом Grafana.
+
+
+15. cd grafana_stack_for_docker
+cd: Переходит в директорию grafana_stack_for_docker, которая была клонирована ранее.
+
+
+16. cp config/* /mnt/common_volume/swarm/grafana/config/
+cp: Копирует файлы.
+config/*: Копирует все файлы из директории config в текущей директории.
+/mnt/common_volume/swarm/grafana/config/: Директория, куда копируются файлы.
+
+
+17. mv grafana.yaml docker-compose.yaml
+mv: Перемещает или переименовывает файлы.
+grafana.yaml: Переименовывает файл grafana.yaml.
+docker-compose.yaml: Новое имя файла.
+
+
+18. sudo docker compose up -d
+sudo: Выполняет команду с правами суперпользователя (root).
+docker compose: Исполняет команду docker-compose для управления контейнерами.
+up: Запускает все контейнеры, определенные в файле docker-compose.yaml.
+-d: Запускает контейнеры в фоновом режиме (detached).
+
+
+19. sudo docker-compose stop
+sudo: Выполняет команду с правами суперпользователя (root).
+docker-compose: Исполняет команду docker-compose для управления контейнерами.
+stop: Останавливает все контейнеры, определенные в файле docker-compose.yaml.
+
+
+20. sudo vi docker-compose.yaml
+sudo: Выполняет команду с правами суперпользователя (root).
+vi: Текстовый редактор (Vim).
+docker-compose.yaml: Открывает файл docker-compose.yaml для редактирования.
+
+
+21. sudo docker compose up -d
+sudo: Выполняет команду с правами суперпользователя (root).
+docker compose: Исполняет команду docker-compose для управления контейнерами.
+up: Запускает все контейнеры, определенные в файле docker-compose.yaml.
+-d: Запускает контейнеры в фоновом режиме (detached).
+
+
+22. echo -e "# TYPE OILCOINT_metric2 gauge\nOILCOINT_metric2 0" | curl --data-binary @- http://localhost:8428/api/v1/import/prometheus
+echo -e: Выводит текст в stdout.
+"# TYPE OILCOINT_metric2 gauge\nOILCOINT_metric2 0": Текст, который нужно вывести.
+curl: Утилита для загрузки данных по HTTP.
+--data-binary @-: Передает данные из stdin.
+http://localhost:8428/api/v1/import/prometheus: URL для импорта метрик в Prometheus.
+
+
+23. curl -G 'http://localhost:8428/api/v1/query' --data-urlencode 'query=OILCOINT_metric2'
+curl -G: Утилита для загрузки данных по HTTP.
+http://localhost:8428/api/v1/query: URL для запроса метрик в Prometheus.
+--data-urlencode 'query=OILCOINT_metric2': Передает данные в виде URL-encoded запроса.
+
+
+24. echo -e "# TYPE OILCOINT_metric2 gauge\nOILCOINT_metric2 50" | curl --data-binary @- http://localhost:8428/api/v1/import/prometheus
+echo -e: Выводит текст в stdout.
+"# TYPE OILCOINT_metric2 gauge\nOILCOINT_metric2 50": Текст, который нужно вывести.
+curl: Утилита для загрузки данных по HTTP.
+--data-binary @-: Передает данные из stdin.
+http://localhost:8428/api/v1/import/prometheus: URL для импорта метрик в Prometheus.
