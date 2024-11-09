@@ -153,3 +153,20 @@ echo -e "# TYPE OILCOINT_metric2 gauge\nOILCOINT_metric2 0" | curl --data-binary
 curl -G 'http://localhost:8428/api/v1/query' --data-urlencode 'query=OILCOINT_metric1'`
 
 ![Curl](https://github.com/user-attachments/assets/e4233e5c-0eab-4080-a72f-48d2184b5eb2)
+
+
+
+ЕСЛИ node-exporter НЕ РАБОТАЕТ:
+проверить (может он рабоатет)
+sudo docker-compose ps
+cd /mnt/common_volume/swarm/grafana/congig
+ls
+vi prometheus.yaml
+![image](https://github.com/user-attachments/assets/afc6f70e-fd32-483a-8c96-82fbe11d5bce)
+targets: ['exporter:9100', и тд
+
+`sudo docker-compose stop`
+`sudo docker-compose up -d`
+
+перезапустить dashboard.
+
