@@ -127,6 +127,8 @@ node-exporter:
 ![добавление node-exporter](https://github.com/user-attachments/assets/015d3026-4efe-4ca0-924c-81c2c4516321)
 
 
+![image](https://github.com/user-attachments/assets/cd951a53-ebd0-452c-8476-0b7007043c88)
+
 
 Удаление локи и тд:
 
