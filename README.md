@@ -184,6 +184,7 @@ targets: ['exporter:9100', и тд
 
 
 VM в Prometheus
+
 не забыть удалить в конфиг network!
 ![image](https://github.com/user-attachments/assets/0090b073-3be7-45df-b475-351943b64b22)
 
