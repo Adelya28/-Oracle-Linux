@@ -127,9 +127,6 @@ node-exporter:
 ![добавление node-exporter](https://github.com/user-attachments/assets/015d3026-4efe-4ca0-924c-81c2c4516321)
 
 
-![image](https://github.com/user-attachments/assets/cd951a53-ebd0-452c-8476-0b7007043c88)
-
-
 Удаление локи и тд:
 
 `sudo docker-compose stop`
@@ -141,6 +138,11 @@ node-exporter:
 `sudo docker-compose up -d`
 
 ![удаление локи и тд](https://github.com/user-attachments/assets/51724023-c80c-4493-8d10-d5b63f2abd6b)
+
+
+node-exporter в Prometheus
+
+![image](https://github.com/user-attachments/assets/cd951a53-ebd0-452c-8476-0b7007043c88)
 
 
 Добавление VM и AM
